@@ -1,6 +1,8 @@
 
 import java.util.ArrayList;
 import java.util.List;
+
+import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Lists;
 
 public class NameInverter {
@@ -15,7 +17,7 @@ public class NameInverter {
     }
 
     private static List<String> withoutHonorifics(List<String> nameParts) {
-        if ("Mr.".equals(nameParts.get(0)))
+        if (Honorifics.isHonorificThere(nameParts.get(0)))
             nameParts.remove(0);
         return nameParts;
     }
@@ -36,5 +38,13 @@ class RegExps {
 
     public static String anyAmountOfWhiteSpace() {
         return "\\s+";
+    }
+}
+
+class Honorifics {
+
+    public static boolean isHonorificThere(String s) {
+        ImmutableList<String> knownHonorifics = ImmutableList.of("Mr.", "Mrs.");
+        return knownHonorifics.contains(s);
     }
 }
