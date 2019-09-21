@@ -14,6 +14,10 @@ public class NameInverterTest {
     public void invert_emptyString_shouldReturnEmptyString() {
         assertThat(NameInverter.invert(""), is(""));
         assertThat(NameInverter.invert("   "), is(""));
+    }
 
+    @Test
+    public void invert_firstName_shouldReturnFirstName() {
+        assertThat(NameInverter.invert("John"), is ("John"));
     }
 }
