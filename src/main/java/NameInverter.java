@@ -30,8 +30,8 @@ public class NameInverter {
         String first = nameParts.get(0);
         String last = nameParts.get(1);
         String postnominals = "";
-        if (nameParts.size() > 2)
-            postnominals += nameParts.get(2);
+        for (String np : nameParts.subList(2, nameParts.size()))
+            postnominals += np + " ";
 
         return String.format("%s, %s %s", last, first, postnominals).trim();
     }
