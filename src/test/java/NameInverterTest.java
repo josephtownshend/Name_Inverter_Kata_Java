@@ -19,5 +19,7 @@ public class NameInverterTest {
     @Test
     public void invert_firstName_shouldReturnFirstName() {
         assertThat(NameInverter.invert("John"), is ("John"));
+        assertThat(NameInverter.invert("   John   "), is ("John"));
+
     }
 }
