@@ -29,8 +29,11 @@ public class NameInverter {
     private static String invert(List<String> nameParts) {
         String first = nameParts.get(0);
         String last = nameParts.get(1);
+        String postnominals = "";
+        if (nameParts.size() > 2)
+            postnominals += nameParts.get(2);
 
-        return String.format("%s, %s", last, first);
+        return String.format("%s, %s %s", last, first, postnominals).trim();
     }
 }
 
@@ -43,8 +46,10 @@ class RegExps {
 
 class Honorifics {
 
+    public static final ImmutableList<String> KNOWN_HONORIFICS = ImmutableList.of("Mr.", "Mrs.");
+
     public static boolean isHonorificThere(String s) {
-        ImmutableList<String> knownHonorifics = ImmutableList.of("Mr.", "Mrs.");
+        ImmutableList<String> knownHonorifics = KNOWN_HONORIFICS;
         return knownHonorifics.contains(s);
     }
 }
