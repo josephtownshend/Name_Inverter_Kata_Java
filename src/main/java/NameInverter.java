@@ -11,7 +11,13 @@ public class NameInverter {
         if (nameParts.size() < 2)
             return nameParts.get(0);
 
-        return invert(nameParts);
+        return invert(withoutHonorifics(nameParts));
+    }
+
+    private static List<String> withoutHonorifics(List<String> nameParts) {
+        if ("Mr.".equals(nameParts.get(0)))
+            nameParts.remove(0);
+        return nameParts;
     }
 
     private static ArrayList<String> breakIntoPartsIgnoringWhitespace(String name) {
